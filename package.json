@@ -1,0 +1,47 @@
+{
+  "name": "@neondatabase/mcp-server-neon",
+  "version": "0.1.9",
+  "description": "MCP server for interacting with Neon Management API and databases",
+  "license": "MIT",
+  "author": "Neon, Inc. (https://neon.tech/)",
+  "homepage": "https://github.com/neondatabase/mcp-server-neon/",
+  "bugs": "https://github.com/neondatabase/mcp-server-neon/issues",
+  "type": "module",
+  "access": "public",
+  "bin": {
+    "mcp-server-neon": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', '755')\"",
+    "watch": "tsc-watch --onSuccess \"chmod 755 dist/index.js\"",
+    "inspector": "npx @modelcontextprotocol/inspector dist/index.js",
+    "format": "prettier --write .",
+    "prepublishOnly": "bun scripts/before-publish.ts",
+    "test": "npx braintrust eval src/tools-evaluations"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.1.0",
+    "@neondatabase/api-client": "1.11.1",
+    "@neondatabase/serverless": "0.10.4",
+    "chalk": "5.3.0",
+    "node-fetch": "2.7.0",
+    "zod": "3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "@types/node-fetch": "^2.6.12",
+    "bun": "^1.1.38",
+    "prettier": "^3.4.1",
+    "tsc-watch": "^6.2.1",
+    "typescript": "^5.3.3",
+    "autoevals": "0.0.111",
+    "braintrust": "0.0.177"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
